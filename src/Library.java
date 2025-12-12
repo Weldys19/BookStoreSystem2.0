@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    List<Book> books;
-    List<Author> authors;
-    List<String> weLend;
+    List<Book> books = new ArrayList<>();
+    List<Author> authors = new ArrayList<>();
+    List<String> weLend = new ArrayList<>();
 
     public List<Book> getBooks() {
         return books;
@@ -27,5 +28,24 @@ public class Library {
 
     public void setWeLend(List<String> weLend) {
         this.weLend = weLend;
+    }
+    public void insertData(){
+        Author author = new Author("George Orwell", 1);
+        authors.add(author);
+
+        books.add(new Book("1984",author, 1));
+        books.add(new Book("A Revolução dos Bichos", author, 2));
+
+        author = new Author("J. R. R. Tolkien", 2);
+        authors.add(author);
+
+        books.add(new Book("O Hobbit", author, 3));
+        books.add(new Book("O Senhor dos Anéis: A Sociedade do Anel", author, 4));
+
+        author = new Author("Jane Austen", 3);
+        authors.add(author);
+
+        books.add(new Book("Orgulho e Preconceito", author, 5));
+        books.add(new Book("Razão e Sensibilidade", author, 6));
     }
 }

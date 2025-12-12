@@ -1,7 +1,13 @@
 public class Book {
     String name;
     Author author;
-    String synopsis;
+    int id;
+
+    public Book(String name, Author author, int id) {
+        this.name = name;
+        this.author = author;
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -19,11 +25,20 @@ public class Book {
         this.author = author;
     }
 
-    public String getSynopsis() {
-        return synopsis;
+    public int getId() {
+        return id;
     }
 
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", author=" + author.getName() +
+                ", id=" + id +
+                '}';
     }
 }
