@@ -1,3 +1,5 @@
+package entities;
+
 public class Author {
     private String name;
     private int id;
@@ -25,7 +27,7 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
+        return "entities.Author{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 '}';

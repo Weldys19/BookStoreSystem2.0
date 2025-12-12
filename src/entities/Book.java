@@ -1,8 +1,12 @@
+package entities;
+
+import util.Status;
+
 public class Book {
-    String name;
-    Author author;
-    int id;
-    Status status = Status.DISPONIVEL;
+    private String name;
+    private Author author;
+    private int id;
+    private Status status = Status.DISPONIVEL;
 
     public Book(String name, Author author, int id) {
         this.name = name;
@@ -44,7 +48,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "entities.Book{" +
                 "name='" + name + '\'' +
                 ", author=" + author.getName() +
                 ", id=" + id +

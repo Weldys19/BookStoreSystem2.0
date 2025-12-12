@@ -1,10 +1,14 @@
+package entities;
+
+import util.Status;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    List<Book> books = new ArrayList<>();
-    List<Author> authors = new ArrayList<>();
-    List<String> weLend = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
+    private List<Author> authors = new ArrayList<>();
+    private List<String> weLend = new ArrayList<>();
 
     public List<Book> getBooks() {
         return books;
@@ -38,6 +42,14 @@ public class Library {
             }
         }
         return bookAvailable;
+    }
+
+    public Book chooseBook(int id){
+        for (Book book : getBooksAvailable(this.books))
+            if (book.getId() == id) {
+                return book;
+            }
+        return null;
     }
 
     public void insertData(){

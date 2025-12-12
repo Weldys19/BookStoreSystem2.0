@@ -1,4 +1,8 @@
-import java.util.List;
+package application;
+
+import entities.Book;
+import entities.Library;
+
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +20,7 @@ public class Main {
 
             if (userResponse.equalsIgnoreCase("SIM")){
                 System.out.println("\nLivros disponiveis\n");
-                for (Book book : library.getBooksAvailable(library.books)){
+                for (Book book : library.getBooksAvailable(library.getBooks())){
                     System.out.println(book.toString());
                 }
             }
