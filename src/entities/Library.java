@@ -2,6 +2,8 @@ package entities;
 
 import util.Status;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,12 +46,17 @@ public class Library {
         return bookAvailable;
     }
 
-    public Book chooseBook(int id){
+    public List<String> chooseBook(int id, String client){
         for (Book book : getBooksAvailable(this.books))
             if (book.getId() == id) {
-                return book;
+                LocalDateTime currentDate = LocalDateTime.now();
+                DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                String date = currentDate.format(fmt);
+                book.setStatus(Status.INDISPONIVEL);
+                StringBuilder listOfLoans = new StringBuilder();
+                weLend.add(listOfLoans.append(String.format("\nLivro emprestado: %s\nCliente: %s\nData: %s\n", book.toString(), client, date)).toString());
             }
-        return null;
+        return weLend;
     }
 
     public void insertData(){

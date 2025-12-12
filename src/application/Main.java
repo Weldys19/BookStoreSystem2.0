@@ -3,6 +3,7 @@ package application;
 import entities.Book;
 import entities.Library;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -22,6 +23,15 @@ public class Main {
                 System.out.println("\nLivros disponiveis\n");
                 for (Book book : library.getBooksAvailable(library.getBooks())){
                     System.out.println(book.toString());
+                }
+                System.out.println("\nEscolha atraves do ID o livro desejado: ");
+                int id = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Digite seu nome completo: ");
+                String client = sc.nextLine().toUpperCase();
+                List<String> chosenBook = library.chooseBook(id, client);
+                for (String loan : chosenBook){
+                    System.out.println(loan);
                 }
             }
         } while (!userResponse.equalsIgnoreCase("NAO"));
