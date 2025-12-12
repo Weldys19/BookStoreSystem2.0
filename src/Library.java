@@ -29,6 +29,17 @@ public class Library {
     public void setWeLend(List<String> weLend) {
         this.weLend = weLend;
     }
+
+    public List<Book> getBooksAvailable(List<Book> books) {
+        List<Book> bookAvailable = new ArrayList<>();
+        for (Book book : books) {
+            if (book.getStatus().equals(Status.DISPONIVEL)) {
+                bookAvailable.add(book);
+            }
+        }
+        return bookAvailable;
+    }
+
     public void insertData(){
         Author author = new Author("George Orwell", 1);
         authors.add(author);

@@ -22,4 +22,12 @@ public class Author {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

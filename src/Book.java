@@ -2,6 +2,7 @@ public class Book {
     String name;
     Author author;
     int id;
+    Status status = Status.DISPONIVEL;
 
     public Book(String name, Author author, int id) {
         this.name = name;
@@ -33,12 +34,21 @@ public class Book {
         this.id = id;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "name='" + name + '\'' +
                 ", author=" + author.getName() +
                 ", id=" + id +
+                ", status=" + status +
                 '}';
     }
 }
