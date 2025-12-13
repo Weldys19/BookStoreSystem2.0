@@ -46,17 +46,31 @@ public class Library {
         return bookAvailable;
     }
 
-    public List<String> chooseBook(int id, String client){
-        for (Book book : getBooksAvailable(this.books))
+    public Book chooseBook(int id) {
+        for (Book book : this.books) {
             if (book.getId() == id) {
-                LocalDateTime currentDate = LocalDateTime.now();
-                DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-                String date = currentDate.format(fmt);
-                book.setStatus(Status.INDISPONIVEL);
-                StringBuilder listOfLoans = new StringBuilder();
-                weLend.add(listOfLoans.append(String.format("\nLivro emprestado: %s\nCliente: %s\nData: %s\n", book.toString(), client, date)).toString());
+                if (book.getStatus().equals(Status.INDISPONIVEL)) {
+                    throw new LibraryException("Livro indisponivel");
+                }
+                return book;
             }
-        return weLend;
+        }
+        throw new LibraryException("Nenhum livro encontrado com esse ID");
+    }
+
+
+    public void lendBook(String client, int id){
+            Book chosenBook = chooseBook(id);
+            LocalDateTime currentDate = LocalDateTime.now();
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            String date = currentDate.format(fmt);
+            chosenBook.setStatus(Status.INDISPONIVEL);
+            String loanSummary = String.format("\nLivro emprestado: %s\nCliente: %s\nData: %s\n", chosenBook.toString(), client, date);
+            weLend.add(loanSummary);
+    }
+
+    public String returnLoan(List<String> weLend){
+        return weLend.getLast();
     }
 
     public void insertData(){
