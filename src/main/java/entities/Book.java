@@ -2,16 +2,20 @@ package entities;
 
 import util.Status;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Book {
     private String name;
     private Author author;
     private int id;
     private Status status = Status.DISPONIVEL;
+    private LocalDateTime registrationDate = LocalDateTime.now();
 
-    public Book(String name, Author author, int id) {
+    public Book(String name, Author author) {
         this.name = name;
         this.author = author;
-        this.id = id;
     }
 
     public String getName() {
@@ -46,13 +50,23 @@ public class Book {
         this.status = status;
     }
 
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
     @Override
     public String toString() {
-        return "entities.Book{" +
+        return "Book{" +
                 "name='" + name + '\'' +
-                ", author=" + author.getName() +
+                ", author=" + author +
                 ", id=" + id +
                 ", status=" + status +
+                ", registrationDate=" + registrationDate +
                 '}';
     }
 }
+

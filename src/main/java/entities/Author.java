@@ -1,12 +1,15 @@
 package entities;
 
+import java.time.LocalDate;
+
 public class Author {
     private String name;
     private int id;
+    private LocalDate dateOfBirth;
 
-    public Author(String name, int id) {
+    public Author(String name, LocalDate dateOfBirth) {
         this.name = name;
-        this.id = id;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getName() {
@@ -25,11 +28,20 @@ public class Author {
         this.id = id;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     @Override
     public String toString() {
-        return "entities.Author{" +
+        return "Author{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
+                ", dateOfBirth=" + dateOfBirth +
                 '}';
     }
 }
